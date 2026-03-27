@@ -1,0 +1,19 @@
+<nav class="navbar" [ngClass]="{'scrolled': isScrolled}">
+    <div class="container nav-container">
+        <a href="#" class="logo">
+            <img src="logo.jpg" alt="Josh Enterprises" class="logo-img">
+            <span class="logo-text">JOSH <span class="highlight">ENTERPRISES</span></span>
+        </a>
+        <ul class="nav-links" [ngClass]="{'active': isMenuOpen}">
+            <li style="--i:0.4s"><a href="#home" (click)="closeMenu()">Home</a></li>
+            <li style="--i:0.5s"><a href="#products" (click)="closeMenu()">Products</a></li>
+            <li style="--i:0.6s"><a href="#about" (click)="closeMenu()">About</a></li>
+            <li style="--i:0.7s"><a href="#contact" (click)="closeMenu()" class="btn-primary">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" [ngClass]="{'toggle': isMenuOpen}" (click)="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</nav>

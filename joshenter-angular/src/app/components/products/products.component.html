@@ -1,0 +1,130 @@
+<section id="products" class="products section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Premium <span class="highlight">Solutions</span></h2>
+            <p>Advanced technology for Home and Business.</p>
+        </div>
+
+        <div class="product-grid">
+            <!-- CCTV -->
+            <div class="product-card" #card1 (mousemove)="onMouseMove($event, card1)"
+                (mouseleave)="onMouseLeave(card1)">
+                <div class="product-image-container">
+                    <img src="cctv.png" alt="CCTV Camera" class="product-img">
+                </div>
+                <h3>CCTV Security Systems</h3>
+                <p>High-definition surveillance cameras with night vision and remote access to keep your premises safe
+                    24/7.</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 3K Resolution</li>
+                    <li><i class="fa-solid fa-check"></i> Motion Detection</li>
+                    <li><i class="fa-solid fa-check"></i> Mobile App Support</li>
+                </ul>
+                <button class="btn-text open-modal" (click)="openModal('cctv')">View Details <i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <!-- RO Purifier -->
+            <div class="product-card" #card2 (mousemove)="onMouseMove($event, card2)"
+                (mouseleave)="onMouseLeave(card2)">
+                <div class="product-image-container">
+                    <img src="ro.png" alt="RO Water Purifier" class="product-img">
+                </div>
+                <h3>RO Water Purifiers</h3>
+                <p>Advanced multi-stage filtration ensuring 100% pure and healthy drinking water for your family.</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> UV + UF Filtration</li>
+                    <li><i class="fa-solid fa-check"></i> Alkaline Boost</li>
+                    <li><i class="fa-solid fa-check"></i> Low Maintenance</li>
+                </ul>
+                <button class="btn-text open-modal" (click)="openModal('ro')">View Details <i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <!-- Inverter (Was missing in grid in original HTML? No, looking closely at original HTML, Inverter modal exists but product card was NOT in the grid in the snippet I saw? Wait Step 5: I missed Inverter Card in the snippet? Or maybe it wasn't there. But modal-inverter exists. I will add Inverter Card if user wants it, but strictly following original file provided in Step 5... index.html lines 67..114 only show CCTV, RO, TV. Wait. CCTV (67), RO (84), TV (100). There is NO Inverter Product Card in the HTML snippet, but there IS an Inverter Modal (273). I will add the Inverter product card as well to make it consistent if I can, but I should stick to the provided code. Actually, the Modal exists, so likely the card was intended or I missed it. I will stick to what is in the HTML: CCTV, RO, TV. Wait, looking at Step 5 list... CCTV, RO, Smart TV. No Inverter Card. I will add only CCTV, RO, TV cards, but I will include the Inverter Modal just in case.) -->
+            <!-- Actually, better to include it if I have the image `inverter.png` which I DO. I'll add the inverter card as a bonus fix, or just stick to original. I'll stick to original cards to be safe, but keep the modal. -->
+
+            <!-- Smart TV -->
+            <div class="product-card" #card3 (mousemove)="onMouseMove($event, card3)"
+                (mouseleave)="onMouseLeave(card3)">
+                <div class="product-image-container">
+                    <img src="tv.png" alt="Smart LED TV" class="product-img">
+                </div>
+                <h3>Smart LED TVs</h3>
+                <p>Experience cinematic entertainment at home with our range of high-performance Smart Android TVs.</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Starts @ ₹7,999</li>
+                    <li><i class="fa-solid fa-check"></i> 4K Ultra HD Display</li>
+                    <li><i class="fa-solid fa-check"></i> Dolby Audio</li>
+                </ul>
+                <button class="btn-text open-modal" (click)="openModal('tv')">View Details <i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Parallax CTA -->
+<section class="parallax-cta">
+    <div class="overlay"></div>
+    <div class="container cta-content">
+        <h2>Experience the Difference</h2>
+        <p>Join hundreds of satisfied customers who trust Josh Enterprises for their safety and power needs.</p>
+        <a href="#contact" class="btn-primary">Get Started Today</a>
+    </div>
+</section>
+
+
+<!-- Modals -->
+<div class="modal-backdrop" *ngIf="activeModal" (click)="closeModal()">
+
+    <!-- CCTV Modal -->
+    <div class="modal-content" *ngIf="activeModal === 'cctv'" (click)="$event.stopPropagation()">
+        <span class="close-modal" (click)="closeModal()">&times;</span>
+        <h2>CCTV Specifications</h2>
+        <ul>
+            <li><strong>Resolution:</strong> 5MP Super HD / 4K Ultra HD</li>
+            <li><strong>Night Vision:</strong> Up to 30 meters with Color Night Vision</li>
+            <li><strong>Storage:</strong> Support up to 8TB HDD & Cloud Storage</li>
+            <li><strong>Features:</strong> Two-way Audio, AI Human Detection, IP67 Weatherproof</li>
+        </ul>
+    </div>
+
+    <!-- RO Modal -->
+    <div class="modal-content" *ngIf="activeModal === 'ro'" (click)="$event.stopPropagation()">
+        <span class="close-modal" (click)="closeModal()">&times;</span>
+        <h2>RO Purifier Details</h2>
+        <ul>
+            <li><strong>Stages:</strong> 7-Stage Purification (Pre-filter, Carbon, RO, UV, UF, Mineral, Post-carbon)
+            </li>
+            <li><strong>Capacity:</strong> 15 Liters/Hour</li>
+            <li><strong>TDS Controller:</strong> Advanced mineral retention technology</li>
+            <li><strong>Warranty:</strong> 1 Year Comprehensive + 1 Free Services</li>
+        </ul>
+    </div>
+
+    <!-- Inverter Modal (Even if no card, keeping it) -->
+    <div class="modal-content" *ngIf="activeModal === 'inverter'" (click)="$event.stopPropagation()">
+        <span class="close-modal" (click)="closeModal()">&times;</span>
+        <h2>Inverter Power Specs</h2>
+        <ul>
+            <li><strong>Capacity:</strong> 900VA - 5kVA available</li>
+            <li><strong>Battery:</strong> Tubular / Gel / Lithium-ion support</li>
+            <li><strong>Efficiency:</strong> > 98% with Pure Sine Wave Output</li>
+            <li><strong>Protection:</strong> Overload, Short-circuit, Deep Discharge protection</li>
+        </ul>
+    </div>
+
+    <!-- TV Modal -->
+    <div class="modal-content" *ngIf="activeModal === 'tv'" (click)="$event.stopPropagation()">
+        <span class="close-modal" (click)="closeModal()">&times;</span>
+        <h2>Smart TV Specifications</h2>
+        <ul>
+            <li><strong>Available Sizes:</strong> 32", 40", 43", 55", 65"</li>
+            <li><strong>Price:</strong> Starting from ₹7,999</li>
+            <li><strong>OS:</strong> Official Android / Google TV Interface</li>
+            <li><strong>Features:</strong> Voice Search, Netflix/Prime/Youtube Pre-installed, Frameless Design</li>
+            <li><strong>Warranty:</strong> 1 Year Panel Warranty</li>
+        </ul>
+    </div>
+</div>
